@@ -17,7 +17,6 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import (
-    AppendEnvironmentVariable,
     DeclareLaunchArgument,
     IncludeLaunchDescription,
 )
@@ -44,17 +43,6 @@ def generate_launch_description():
         "ign_config_path",
         default_value=os.path.join(pkg_simulator, "resource", "ign", "gui.config"),
         description="Path to the Ignition Gazebo GUI configuration file",
-    )
-
-    # Set Gazebo plugin and resource path
-    append_enviroment_worlds = AppendEnvironmentVariable(
-        name="GAZEBO_PLUGIN_PATH",
-        value=os.path.join(pkg_simulator, "resource", "worlds"),
-    )
-
-    append_enviroment_models = AppendEnvironmentVariable(
-        name="IGN_GAZEBO_RESOURCE_PATH",
-        value=os.path.join(pkg_simulator, "resource", "models"),
     )
 
     # Launch Gazebo simulator
@@ -86,8 +74,6 @@ def generate_launch_description():
 
     ld.add_action(declare_world_sdf_path)
     ld.add_action(declare_ign_config_path)
-    ld.add_action(append_enviroment_worlds)
-    ld.add_action(append_enviroment_models)
     ld.add_action(gazebo)
     ld.add_action(robot_ign_bridge)
 
