@@ -46,7 +46,8 @@ from ros_handler import (
     publish_shoot_cmd_msg,
 )
 from sensor_msgs.msg import Image
-from vision_interfaces.msg import AutoAim
+# from vision_interfaces.msg import AutoAim
+from auto_aim_interfaces.msg import AutoAim
 
 from rmoss_interfaces.msg import (
     ChassisCmd,
