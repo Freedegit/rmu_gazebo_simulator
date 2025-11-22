@@ -1,10 +1,9 @@
 name: Build and Test
 on:
-  push:
   pull_request:
 
 jobs:
-  build-and-test:
+  build_and_test:
     runs-on: ubuntu-latest
     container:
       image: rostooling/setup-ros-docker:ubuntu-jammy-ros-humble-desktop-latest
